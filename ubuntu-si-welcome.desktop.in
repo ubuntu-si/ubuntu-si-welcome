@@ -1,6 +1,6 @@
 [Desktop Entry]
-_Name=Ubuntu Si Welcome
-_Comment=UbuntuSiWelcome application
+_Name=Dobrodšli v Ubuntu
+_Comment=Vsebuje pomembne informacije za nove uporabnike Ubuntu OS
 Categories=GNOME;Utility;
 Exec=ubuntu-si-welcome
 Icon=ubuntu-si-welcome

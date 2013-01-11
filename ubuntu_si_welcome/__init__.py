@@ -20,32 +20,21 @@ from gi.repository import Gtk, Gdk, WebKit, Notify, Soup  # pylint: disable=E061
 import json
 import os
 import sys
+import logging
+logger = logging.getLogger('ubuntu_si_welcome')
+
+from ubuntu_si_welcome_lib import get_data_path
+from ubuntu_si_welcome_lib import xdg_data_home
 
 try:
     from gi.repository import Unity, Dbusmenu
 except ImportError:
     pass
 
-def expandvarsu(path):
-    """ Unicode version of os.path.expandvars """
-
-    return unicode(os.path.expandvars(path), sys.getdefaultencoding())
-
-
-def getenvu(key, default=None):
-    """ Unicode version of os.getenv """
-
-    var = os.getenv(key, default)
-    return (var if isinstance(var, unicode) else unicode(var, sys.getdefaultencoding()))
-
-
-xdg_config_home = getenvu('XDG_CONFIG_HOME', expandvarsu('$HOME/.config'))
-xdg_data_home = getenvu('XDG_DATA_HOME', expandvarsu('$HOME/.cache'))
-
 
 class Okno(Gtk.Window):
 
-    def __init__(self, width, height, project_root_directory):
+    def __init__(self, width, height):
 
         # create the window
 
@@ -97,7 +86,7 @@ class Okno(Gtk.Window):
         # Enables Cookies
 
         session = WebKit.get_default_session()
-        cache = os.path.join(xdg_data_home, 'com.dz0ny.ubuntu-si-welcome')
+        cache = os.path.join(xdg_data_home(), 'com.dz0ny.ubuntu-si-welcome')
         cookie_jar = Soup.CookieJarText.new(os.path.join(cache, 'WebkitSession'), False)
         session.add_feature(cookie_jar)
         session.props.max_conns_per_host = 8
@@ -125,28 +114,36 @@ class Okno(Gtk.Window):
 
         vbox.pack_start(self.scroller, True, True, 0)
 
-        html_file = """%s/ubuntu_si_welcome/app/public/index.html""" % project_root_directory
+        html_file = """%s/web_app/public/index.html""" % get_data_path()
 
         self.webview.open(html_file)
 
         self.webview.connect('title-changed', self._on_html_message)
 
         # Unity Support
+
         Notify.init('ubuntu-si-welcome')
-        self.notification = Notify.Notification.new('ubuntu-si-welcome', '', '/usr/share/icons/hicolor/128x128/apps/ubuntu-si-welcome.png')
+        self.notification = Notify.Notification.new('ubuntu-si-welcome', '',
+                '/usr/share/icons/hicolor/128x128/apps/ubuntu-si-welcome.png')
         try:
-            launcher = Unity.LauncherEntry.get_for_desktop_id("ubuntu-si-welcome.desktop")
+            launcher = Unity.LauncherEntry.get_for_desktop_id('ubuntu-si-welcome.desktop')
 
             ql = Dbusmenu.Menuitem.new()
             updatenews = Dbusmenu.Menuitem.new()
-            updatenews.property_set(Dbusmenu.MENUITEM_PROP_LABEL, "Link1")
+            updatenews.property_set(Dbusmenu.MENUITEM_PROP_LABEL, 'Link1')
             updatenews.property_set_bool(Dbusmenu.MENUITEM_PROP_VISIBLE, True)
             ql.child_append(updatenews)
-            launcher.set_property("quicklist", ql)
+            launcher.set_property('quicklist', ql)
         except NameError:
             pass
 
-    def inspect_webview(self, inspector, widget, data=None):
+    def inspect_webview(
+        self,
+        inspector,
+        widget,
+        data=None,
+        ):
+
         inspector_view = WebKit.WebView()
         self.inspector_window.add(inspector_view)
         self.inspector_window.resize(800, 400)
@@ -173,15 +170,13 @@ class Okno(Gtk.Window):
             except Exception, inst:
                 print inst
                 message = {'signal': 'error', 'data': 'signal not parsed'}
-        self.on_html_message(message['signal'], message['data'])
 
-    def on_html_message(self, message):
-        pass
+        # self.on_html_message(message['signal'], message['data'])
 
     def send_html_message(self, signal, data):
         data_string = json.dumps(data)
-        self.webview.execute_script("require('lib/backend')._receive_message('%s','%s');" % (signal,
-                                 data_string))
+        self.webview.execute_script("require('lib/backend')._receive_message('%s','%s');"
+                                    % (signal, data_string))
 
     def quit(self, widget, data=None):
         self.destroy()

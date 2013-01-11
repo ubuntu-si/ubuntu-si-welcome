@@ -136,12 +136,12 @@ class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
 
 DistUtilsExtra.auto.setup(
     name='ubuntu-si-welcome',
-    version='13.01.2',
+    version='13.01.2-public1',
     license='GPL-3',
     author='Janez Troha',
     author_email='dz0ny@shortmail.com',
     description='Aplikacija, ki se zažene ob prvem zagonu na ubuntu-si',
-    long_description='Vsebuje pomembne informacije',
+    long_description='Vsebuje pomembne informacije za nove uporabnike Ubuntu OS',
     url='https://launchpad.net/ubuntu-si-welcome',
     cmdclass={'install': InstallAndUpdateDataDirectory}
     )

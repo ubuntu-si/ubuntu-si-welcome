@@ -1,0 +1,46 @@
+@import '_settings'
+
+normalize()
+base()
+grid()
+oranzna = #F37936
+html 
+  overflow-x: hidden
+
+body
+  background-image: url(../img/bg_dotted.png)
+  padding: 50px
+  margin:0
+  padding:.5em
+  overflow-x: hidden
+h1
+  text-indent:-9999px
+  background-image: url(../img/logotip.svg)
+  background-repeat:no-repeat
+  height: 2.6em
+  background-size: contain
+  margin-left:.4em
+aside
+  margin-top: .3em
+  a
+    transition: all .25s ease-in-sine
+    color: oranzna
+    text-decoration: none
+    hover-darken(percent = 25%)
+
+
+.vsebina
+  background-color:white!important;
+  column(12)
+
+section
+aside
+  background-color:white!important;
+
+section
+  column(8)
+  display: block
+
+aside
+  column(3)
+  display: block

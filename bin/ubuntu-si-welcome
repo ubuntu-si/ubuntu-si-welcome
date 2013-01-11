@@ -21,6 +21,7 @@ import sys
 import os
 
 import locale
+import locale
 locale.textdomain('ubuntu-si-welcome')
 
 # Add project root directory (enable symlink and trunk execution)
@@ -46,7 +47,7 @@ if python_path:
 import ubuntu_si_welcome
 from gi.repository import Gtk
 
-window = ubuntu_si_welcome.Okno(800,600,PROJECT_ROOT_DIRECTORY)
+window = ubuntu_si_welcome.Okno(900,600)
 window.connect('destroy', Gtk.main_quit)
 window.show()
 Gtk.main()

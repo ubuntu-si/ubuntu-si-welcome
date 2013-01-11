@@ -19,4 +19,4 @@ Depends: ${misc:Depends},
  gir1.2-soup-2.4,
  gir1.2-webkit-3.0
 Description: Aplikacija, ki se zažene ob prvem zagonu na ubuntu-si
- Vsebuje pomembne informacije
+ Vsebuje pomembne informacije za nove uporabnike Ubuntu OS
