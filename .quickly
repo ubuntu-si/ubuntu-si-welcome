@@ -1,0 +1,5 @@
+project = ubuntu-si-welcome
+version = 12.08.1
+template = ubuntu-application
+ppa = ubuntu-si-welcome
+lp_id = ubuntu-si-welcome

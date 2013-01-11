@@ -1,0 +1,16 @@
+{
+  "name": "ubuntu-si-welcome",
+  "version": "0.0.0",
+  "description": "Vsebina alpikacije",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "jam": {
+    "packageDir": "assets/js/vendor",
+    "baseUrl": "assets/js"
+  },
+  "author": "dz0ny",
+  "license": "GPLv3"
+}

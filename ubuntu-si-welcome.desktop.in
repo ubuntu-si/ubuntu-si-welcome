@@ -1,0 +1,8 @@
+[Desktop Entry]
+_Name=Ubuntu Si Welcome
+_Comment=UbuntuSiWelcome application
+Categories=GNOME;Utility;
+Exec=ubuntu-si-welcome
+Icon=ubuntu-si-welcome
+Terminal=false
+Type=Application

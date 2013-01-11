@@ -1,0 +1,24 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: ubuntu-si-welcome
+Upstream-Contact: Janez Troha <dz0ny@shortmail.com>
+Source: https://launchpad.net/ubuntu-si-welcome
+
+Files: *
+Copyright: (C) 2010-2012, The Dojo Foundation All Rights Reserved.
+Copyright: (C) 2013 <Janez Troha> <dz0ny@shortmail.com>
+Copyright: (C){b.borderTopWidth=c.t.a(a)+"px";b.borderRightWidth=c.r.a(a)+"px";b.borderBottomWidth=c.b.a(a)+"px";b.borderLeftWidth=c.l.a(a)+"px"}this.mc()}},
+Copyright: (C)b.borderWidth=c;if(d)b.borderColor=d;return a}});(function(){f.jb=f.B.ka({wa:"border-radius",Fa:"borderRadius",la:function(b){var c=null,d,e,g,j,i=false;if(b){e=new f.v(b);var h=function(){for(var k=[],n;(g=e.next())&&g.W();){j=f.n(g.d);n=j.ic();if(n<0)return null;if(n>0)i=true;k.push(j)}return k.length>0&&k.length<5?{tl:k[0],tr:k[1]||k[0],br:k[2]||k[0],bl:k[3]||k[1]||k[0]}:null};if(b=h()){if(g){if(g.k&f.v.qa.pa&&g.d===
+Copyright: (C);c=d.fa();if(c<1)a.fill.opacity=c}else this.vb("bgColor")},pd:function(){var a=this.g.C.j(),b=this.s.o();a=a&&a.M;var c,d,e,g,j;if(a){this.lc();d=b.h;e=b.f;for(j=a.length;j--;){b=a[j];c=this.Aa("bgImage"+j,"fill",this.I(),2);c.stroked=false;c.fill.type="tile";c.fillcolor="none";c.coordsize=d*2+","+e*2;c.coordorigin="1,1";c.path=this.ya(0,2);g=c.style;g.width=d;g.height=e;if(b.P==="linear-gradient")this.bd(c,b);else{c.fill.src=b.Ab;this.Nd(c,j)}}}for(j=a?a.length:
+Copyright: (C);delete b[a]}return!!c},kc:function(a){var b=this.e,c=this.s.o(),d=c.h,e=c.f,g,j,i,h,k,n;c=a.x.tl.a(b,d);g=a.y.tl.a(b,e);j=a.x.tr.a(b,d);i=a.y.tr.a(b,e);h=a.x.br.a(b,d);k=a.y.br.a(b,e);n=a.x.bl.a(b,d);a=a.y.bl.a(b,e);d=Math.min(d/(c+j),e/(i+k),d/(n+h),e/(g+a));if(d<1){c*=d;g*=d;j*=d;i*=d;h*=d;k*=d;n*=d;a*=d}return{x:{tl:c,tr:j,br:h,bl:n},y:{tl:g,tr:i,br:k,bl:a}}},ya:function(a,b,c){b=b||1;var d,e,
+Copyright: (C){for(var d=0,e=c.length;d<e;d++)f.attach(c[d]);c=0}}var c;if(f.ja<9){f.L.ta(window,
+Copyright: (C){function d(p,r){p=new a.ob(p,r);if(!c){k.X.push(p);k.Ga++}return p}function e(){k.Ga++;return null}var g,j,i,h,k=this;if(this.Ga<this.X.length)return this.X[this.Ga++];for(;this.de.test(this.$a.charAt(this.ch));)this.ch++;
+Copyright: (C);if(a.colors)a.colors.value=i.join(",");else a.colors=i.join(",")},lc:function(){var a=this.e.runtimeStyle;a.backgroundImage="url(about:blank)";a.backgroundColor="transparent"},m:function(){f.u.m.call(this);
+Copyright: (C);if(P){F.type="gradienttitle";F.color2=F.color;F.opacity=
+Copyright: (C)+","+i(k)+"l"+h(e-p)+","+i(k)+"qx"+h(e-n)+","+i(r)+"l"+h(e-n)+","+h(g-v)+"qy"+h(e-t)+","+h(g-m)+"l"+i(l)+","+h(g-m)+"qx"+i(a)+","+h(g-b)+" x e"}else e="m"+i(a)+","+i(k)+"l"+h(e-n)+","+i(k)+"l"+h(e-n)+","+h(g-m)+"l"+i(a)+
+Copyright: (C);return;case"undefined":d[a]=c;return}}},e.prototype.extend=function(a){function e(a){b._methods[a]=!0,b[a]=function(){var c=arguments.length===1?[a,""]:[a];b.on.apply(b,c.concat(Array.prototype.slice.call(arguments)))}}var b=this,c=a.length,d;for(d=0;d<c;d++)e(a[d])},e.prototype.runlist=function(a){var b=this.every&&this.every.before?[this.every.before].concat(g(a)):g(a);this.every&&this.every.on&&b.push(this.every.on),b.captures=a.captures,b.source=a.source;return b},e.prototype.mount=function(a,b){function d(b,d){var e=b,f=b.split(c.delimiter),g=typeof a[b],h=f[0]===""||!c._methods[f[0]],i=h?"on":e;h&&(e=e.slice((e.match(new RegExp(c.delimiter))||[""])[0].length),f.shift());h&&g==="object"&&!Array.isArray(a[b])?(d=d.concat(f),c.mount(a[b],d)):(h&&(d=d.concat(e.split(c.delimiter)),d=k(d,c.delimiter)),c.insert(i,d,a[b]))}if(!!a&&typeof a=="object"&&!Array.isArray(a)){var c=this;b=b||[],Array.isArray(b)||(b=b.split(c.delimiter));for(var e in a)a.hasOwnProperty(e)&&d(e,b.slice(0))}}})(typeof exports=="object"?exports:window)
+Copyright: (C){this.$a=c;this.ch=0;this.X=[];this.Ga=0}var b=a.qa={Ia:1,Wb:2,z:4,Lc:8,Xb:16,na:32,K:64,oa:128,pa:256,Ra:512,Tc:1024,URL:2048};a.ob=function(c,d){this.k=c;this.d=d};a.ob.prototype={Ca:function(){return this.k&b.K||this.k&b.oa&&this.d==="0"},W:function(){return this.Ca()||this.k&
+Copyright: (C){this.Y=c}var b={};a.Qd=/\s*rgba\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d+|\d*\.\d+)\s*\)\s*/;a.Fb={aliceblue:"F0F8FF",antiquewhite:"FAEBD7",aqua:"0FF",aquamarine:"7FFFD4",azure:"F0FFFF",beige:"F5F5DC",bisque:"FFE4C4",black:"000",blanchedalmond:"FFEBCD",blue:"00F",blueviolet:"8A2BE2",brown:"A52A2A",burlywood:"DEB887",cadetblue:"5F9EA0",chartreuse:"7FFF00",chocolate:"D2691E",coral:"FF7F50",cornflowerblue:"6495ED",
+Copyright: (C);t=t.color;u=-h-o;if(!e&&o)e=f.jb.Dc;u=this.ya({Jb:u,Ib:u,tb:u,Db:u},2,e);if(o){x=(h+o)*2+n;y=(h+o)*2+m;z=x?o*2/x:0;B=y?o*2/y:0;if(o-h>n/2||o-h>m/2)for(h=4;h--;){r=p[h];E=r.charAt(0)==="b";
+License: GPL-3
+ The full text of the GPL is distributed in
+ /usr/share/common-licenses/GPL-3 on Debian systems.
