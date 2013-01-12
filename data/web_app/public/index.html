@@ -1,25 +1,3 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-    <title>Dobrodošli v Ubuntu!</title>
-    <link rel="stylesheet" href="css/app.css">
-  </head>
-  <body>
-<h1>Dobrodošli v Ubuntu</h1>
-<div class="vsebina">
-  <aside><a href="#/uvod" data-api="/uvod">
-      <h2>Uvod v Ubuntu</h2></a><a href="#/vodici" data-api="/video-vodici">
-      <h2>Video vodiči</h2></a><a href="#/programi" data-api="/uporabni-programi">
-      <h2>Uporabni programi</h2></a><a href="#/irc" data-api="/pomoc-v-zivo">
-      <h2>Pomoč v živo</h2></a></aside>
-  <section><h2>Ful hud naslov</h2>
+<!DOCTYPE html><html><head><meta charset=utf8><meta http-equiv=X-UA-Compatible content="IE=edge, chrome=1"><title>Dobrodošli v Ubuntu!</title><link rel=stylesheet href="css/app.css"></head><body><h1>Dobrodošli v Ubuntu</h1><div class=vsebina><aside><a href="#/uvod" data-api="/uvod"><h2>Uvod v Ubuntu</h2></a><a href="#/gradivo" data-api="/gradivo"><h2>Uporabno gradivo</h2></a><a href="#/vodici" data-api="/video-vodici"><h2>Video vodiči</h2></a><a href="#/programi" data-api="/uporabni-programi"><h2>Uporabni programi</h2></a><a href="#/irc" data-api="/pomoc-v-zivo"><h2>Pomoč v živo</h2></a><section></section></aside><section><h2>Ful hud naslov</h2>
 <p>testna vsebina</p>
-
-  </section>
-</div>
-  </body>
-  <script data-main="js/main" src="js/vendor/require.js"></script><script>protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://'; address = protocol + window.location.host + window.location.pathname + '/ws'; socket = new WebSocket(address);
-socket.onmessage = function(msg) { msg.data == 'reload' && window.location.reload() }</script>
-</html>
+</section></div></body><script data-main="js/main" src="js/vendor/require.js"></script></html>

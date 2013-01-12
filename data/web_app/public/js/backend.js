@@ -1,18 +1,1 @@
-define(['lib/mediator'], function(mediator) {
-
-    mediator.subscribe('send_backend', function(signal_name, data) {
-        var title = document.querySelector('title');
-        title.innerHTML = 'null';
-        var message = {'signal': signal_name, 'data': data};
-        title.innerHTML = JSON.stringify(message);
-    });
-
-    return {
-        // should only be used by the python backend
-        _receive_message: function(signal_name, data_string) {
-          var data = JSON.parse(data_string);
-          mediator.publish('backend_message', signal_name, data);
-        }
-    };
-
-});
+define(["lib/mediator"],function(n){return n.subscribe("send_backend",function(n,e){var t=document.querySelector("title");t.innerHTML="null";var r={signal:n,data:e};t.innerHTML=JSON.stringify(r)}),{_receive_message:function(e,t){var r=JSON.parse(t);n.publish("backend_message",e,r)}}});
