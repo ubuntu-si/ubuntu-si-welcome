@@ -112,6 +112,8 @@ def compile_schemas(root, target_data):
             os.path.isfile('/usr/bin/glib-compile-schemas')):
         os.system('/usr/bin/glib-compile-schemas "%s"' % schemadir)
 
+def copy_startup(root, target_data):
+    pass
 
 class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
     def run(self):
@@ -128,6 +130,7 @@ class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
         desktop_file = move_desktop_file(self.root, target_data, self.prefix)
         update_desktop_file(desktop_file, target_pkgdata, target_scripts)
         compile_schemas(self.root, target_data)
+        copy_startup(self.root, target_data)
 
         
 ##################################################################################
@@ -136,7 +139,7 @@ class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
 
 DistUtilsExtra.auto.setup(
     name='ubuntu-si-welcome',
-    version='13.01.2-public3',
+    version='13.01.2-public8',
     license='GPL-3',
     author='Janez Troha',
     author_email='dz0ny@shortmail.com',

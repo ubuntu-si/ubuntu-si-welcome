@@ -13,9 +13,6 @@ Architecture: all
 Depends: ${misc:Depends},
  ${python:Depends},
  gir1.2-gtk-3.0,
- gir1.2-notify-0.7,
- gir1.2-dbusmenu-glib-0.4,
- gir1.2-unity-5.0,
  gir1.2-soup-2.4,
  gir1.2-webkit-3.0
 Description: Aplikacija, ki se zažene ob prvem zagonu na ubuntu-si

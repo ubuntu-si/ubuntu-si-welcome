@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="ubuntu-si-welcome">
   <schema id="com.dz0ny.ubuntu-si-welcome" path="/com/dz0ny/ubuntu-si-welcome/">
-    <key name="enabled" type="boolean">
+    <key name="enabled" type="b">
       <default>false</default>
       <summary>Zaženi ob zagonu</summary>
     </key>

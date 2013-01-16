@@ -4,17 +4,21 @@ normalize()
 base()
 grid()
 oranzna = #F37936
+magenta = #210819
 html 
   overflow-x: hidden
 
 body
+  transition: all 3.25s ease-in-sine
   background-image: url(../img/bg_dotted.png)
   padding: 50px
   margin:0
   padding:.5em
   overflow-x: hidden
 h1
+  transition: all .25s ease-in-sine
   text-indent:-9999px
+  background-color:none!important;
   background-image: url(../img/logotip.svg)
   background-repeat:no-repeat
   height: 2.6em
@@ -22,16 +26,27 @@ h1
   margin-left:.4em
 aside
   margin-top: .3em
+  padding:1em
   a
     transition: all .25s ease-in-sine
     color: oranzna
     text-decoration: none
     hover-darken(percent = 25%)
-
+    &.izbrano
+      color: #D2530D;
 
 .vsebina
-  background-color:white!important;
+  background-color:none!important;
   column(12)
+
+body.loading
+  h1
+    background-color:none!important;
+    transition: all 3.25s ease-in-sine
+    height: 6em
+    text-align: center
+  .vsebina
+    display: none
 
 section
 aside
@@ -40,6 +55,7 @@ aside
 section
   column(8)
   display: block
+  padding: 1em
 
 aside
   column(3)

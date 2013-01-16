@@ -16,20 +16,16 @@
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 ### END LICENSE
 
-from gi.repository import Gtk, Gdk, WebKit, Notify, Soup  # pylint: disable=E0611
+from gi.repository import Gtk, Gdk, WebKit, Soup  # pylint: disable=E0611
 import json
 import os
 import sys
 import logging
+import subprocess
 logger = logging.getLogger('ubuntu_si_welcome')
 
 from ubuntu_si_welcome_lib import get_data_path
 from ubuntu_si_welcome_lib import xdg_data_home
-
-try:
-    from gi.repository import Unity, Dbusmenu
-except ImportError:
-    pass
 
 
 class Okno(Gtk.Window):
@@ -94,10 +90,12 @@ class Okno(Gtk.Window):
         self.webview = WebKit.WebView()
         self.scroller.add(self.webview)
         self.webview.props.settings.enable_default_context_menu = False
-        self.webviewsettings = self.webview.get_settings()
-        self.webviewsettings.set_property('javascript-can-open-windows-automatically', True)
-        self.webviewsettings.set_property('enable-universal-access-from-file-uris', True)
-        self.webviewsettings.set_property('enable-developer-extras', True)
+
+        settings = self.webview.get_settings()
+        settings.set_property("enable-plugins", False)
+        settings.set_property('javascript-can-open-windows-automatically', True)
+        settings.set_property('enable-universal-access-from-file-uris', True)
+        settings.set_property('enable-developer-extras', False)
 
         self.webview_inspector = self.webview.get_inspector()
         self.webview_inspector.connect('inspect-web-view', self.inspect_webview)
@@ -114,35 +112,23 @@ class Okno(Gtk.Window):
 
         vbox.pack_start(self.scroller, True, True, 0)
 
+        self.webview.connect("navigation-policy-decision-requested", self._on_new_window)
+        #self.webview.connect("console-message", self._on_console_message)
+
+        # a possible way to do IPC (script or title change)
+        self.webview.connect("script-alert", self._on_script_alert)
+        self.webview.connect("title-changed", self._on_title_changed)
+        #self.webview.connect("notify::load-status", self._on_load_status_changed)
+
         html_file = """%s/web_app/public/index.html""" % get_data_path()
-
         self.webview.open(html_file)
-
-        self.webview.connect('title-changed', self._on_html_message)
-
-        # Unity Support
-
-        Notify.init('ubuntu-si-welcome')
-        self.notification = Notify.Notification.new('ubuntu-si-welcome', '',
-                '/usr/share/icons/hicolor/128x128/apps/ubuntu-si-welcome.png')
-        try:
-            launcher = Unity.LauncherEntry.get_for_desktop_id('ubuntu-si-welcome.desktop')
-
-            ql = Dbusmenu.Menuitem.new()
-            updatenews = Dbusmenu.Menuitem.new()
-            updatenews.property_set(Dbusmenu.MENUITEM_PROP_LABEL, 'Link1')
-            updatenews.property_set_bool(Dbusmenu.MENUITEM_PROP_VISIBLE, True)
-            ql.child_append(updatenews)
-            launcher.set_property('quicklist', ql)
-        except NameError:
-            pass
 
     def inspect_webview(
         self,
         inspector,
         widget,
         data=None,
-        ):
+    ):
 
         inspector_view = WebKit.WebView()
         self.inspector_window.add(inspector_view)
@@ -151,32 +137,34 @@ class Okno(Gtk.Window):
         self.inspector_window.present()
         return inspector_view
 
-    def _on_html_message(
-        self,
-        view,
-        frame,
-        title,
-        ):
-
-        if title == 'null':
-
-            # ignore when the title was set to null
-            # typically to ensure the same message can be passed twice
-
-            return
+    def _on_new_window(self, web_view, frame, request, navigation_action, policy_decision):
+        #print "_on_new_window", web_view, frame, request, navigation_action, policy_decision
+        #policy_decision.webkit_web_policy_decision_ignore()
+        if "file://" in request.get_uri():
+            return False
         else:
-            try:
-                message = json.loads(title)
-            except Exception, inst:
-                print inst
-                message = {'signal': 'error', 'data': 'signal not parsed'}
+            policy_decision.ignore()
+            print request.get_uri()
+            subprocess.Popen(['xdg-open', request.get_uri()])
+            return True
 
-        # self.on_html_message(message['signal'], message['data'])
+    def _on_console_message(self, view, message, line, source_id):
+        print "_on_console_message", message, line, source_id
+        return False
 
-    def send_html_message(self, signal, data):
-        data_string = json.dumps(data)
-        self.webview.execute_script("require('lib/backend')._receive_message('%s','%s');"
-                                    % (signal, data_string))
+    def _on_script_alert(self, view, frame, message):
+        # stop further processing to avoid actually showing the alter
+        print "_on_script_alert", view, frame, messag
+        return True
+
+    def _on_title_changed(self, view, frame, title):
+        print "on_title_changed", view, frame, title
+        self.set_title(title)
+        # see wkwidget.py _on_title_changed() for a code example
+
+    def _on_load_status_changed(self, view, property_spec):
+        """ helper to give visual feedback while the page is loading """
+        print "_on_load_status_changed", view, property_spec
 
     def quit(self, widget, data=None):
         self.destroy()

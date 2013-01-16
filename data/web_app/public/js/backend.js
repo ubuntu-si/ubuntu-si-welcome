@@ -1,1 +1,1 @@
-define(["lib/mediator"],function(n){return n.subscribe("send_backend",function(n,e){var t=document.querySelector("title");t.innerHTML="null";var r={signal:n,data:e};t.innerHTML=JSON.stringify(r)}),{_receive_message:function(e,t){var r=JSON.parse(t);n.publish("backend_message",e,r)}}});
+define(["lib/mediator"],function(e){return e.subscribe("send_backend",function(e,t){var n=document.querySelector("title");n.innerHTML="null";var i={signal:e,data:t};n.innerHTML=JSON.stringify(i)}),{_receive_message:function(t,n){var i=JSON.parse(n);e.publish("backend_message",t,i)}}});
