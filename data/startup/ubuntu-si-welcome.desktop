@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Dobrodošli v Ubuntu
+Comment=Vsebuje pomembne informacije za nove uporabnike Ubuntu OS
+Exec=ubuntu-si-welcome
+Icon=ubuntu-si-welcome
+OnlyShowIn=GNOME;Unity;
+Terminal=false
+Type=Application
+AutostartCondition=GSettings com.dz0ny.ubuntu-si-welcome enabled
+X-GNOME-Autostart-Phase=Applications
+X-GNOME-AutoRestart=false
+X-Ubuntu-Gettext-Domain=ubuntu-si-welcome

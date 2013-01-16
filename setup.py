@@ -139,7 +139,7 @@ class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
 
 DistUtilsExtra.auto.setup(
     name='ubuntu-si-welcome',
-    version='13.01.2-public8',
+    version='13.01.3-public1',
     license='GPL-3',
     author='Janez Troha',
     author_email='dz0ny@shortmail.com',

@@ -75,6 +75,10 @@ class Okno(Gtk.Window):
         file_item.set_submenu(file_menu)
         menu_bar.append(file_item)
 
+        #Settings
+
+        #self.settings = Settings("com.dz0ny.ubuntu-si-welcome")
+
         # create the WebView
 
         self.scroller = Gtk.ScrolledWindow()
@@ -118,7 +122,6 @@ class Okno(Gtk.Window):
         # a possible way to do IPC (script or title change)
         self.webview.connect("script-alert", self._on_script_alert)
         self.webview.connect("title-changed", self._on_title_changed)
-        #self.webview.connect("notify::load-status", self._on_load_status_changed)
 
         html_file = """%s/web_app/public/index.html""" % get_data_path()
         self.webview.open(html_file)
@@ -154,17 +157,13 @@ class Okno(Gtk.Window):
 
     def _on_script_alert(self, view, frame, message):
         # stop further processing to avoid actually showing the alter
-        print "_on_script_alert", view, frame, messag
+        #print "_on_script_alert", view, frame, messag
         return True
 
     def _on_title_changed(self, view, frame, title):
-        print "on_title_changed", view, frame, title
+        #print "on_title_changed", view, frame, title
         self.set_title(title)
         # see wkwidget.py _on_title_changed() for a code example
-
-    def _on_load_status_changed(self, view, property_spec):
-        """ helper to give visual feedback while the page is loading """
-        print "_on_load_status_changed", view, property_spec
 
     def quit(self, widget, data=None):
         self.destroy()
