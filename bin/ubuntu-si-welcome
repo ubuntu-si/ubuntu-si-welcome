@@ -47,7 +47,7 @@ if python_path:
 import ubuntu_si_welcome
 from gi.repository import Gtk
 
-window = ubuntu_si_welcome.Okno(900,600)
+window = ubuntu_si_welcome.Okno(960,640)
 window.connect('destroy', Gtk.main_quit)
 window.show()
 Gtk.main()
