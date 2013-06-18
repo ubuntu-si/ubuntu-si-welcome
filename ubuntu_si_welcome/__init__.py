@@ -144,7 +144,7 @@ class Okno(Gtk.Window):
         #print "_on_new_window", web_view, frame, request, navigation_action, policy_decision
         #policy_decision.webkit_web_policy_decision_ignore()
         rui = request.get_uri()
-        if "file://" in rui or "webchat" in rui or "about:" in rui:
+        if "file://" in rui or "webchat" in rui or "about:" in rui or "https:" in rui:
             return False
         else:
             policy_decision.ignore()
